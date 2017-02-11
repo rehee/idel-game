@@ -1,0 +1,28 @@
+<div ng-controller="monsterDetailCtl as vm">
+	<div>
+		<table>
+			<tr>
+				<td>name:</td><td><input type="text" ng-model="vm.monster.name" /></td>
+			</tr>
+			<tr>
+				<td>hp:</td><td><input type="text" ng-model="vm.monster.hp" /></td>
+			</tr>
+			<tr>
+				<td>attack:</td><td><input type="text" ng-model="vm.monster.attack" /></td>
+			</tr>
+			<tr>
+				<td>speed:</td><td><input type="text" ng-model="vm.monster.speed" /></td>
+			</tr>
+			<tr>
+				<td>exp:</td><td><input type="text" ng-model="vm.monster.exp" /></td>
+			</tr>
+		</table>
+		<ul>
+			<li ng-repeat="(key,value) in vm.monster.stageConfig ">
+				map: <span>{{vm.stages[key]}}</span> 
+				<input type="text" ng-model="vm.monster.stageConfig[key]">
+			</li>
+		</ul>
+		<input type="button" ng-click="vm.editMonster()" value="save">
+	</div>
+</div>

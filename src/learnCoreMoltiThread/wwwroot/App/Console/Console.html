@@ -1,0 +1,48 @@
+<div ng-controller="consoleCtl as vm">
+	<div>
+		<input myEnter type="text"	ng-model="vm.cmd"	>
+		<input type="button" value="click" ng-click="vm.commandText(vm.cmd)">	
+	</div>
+	<div>{{vm.data.currentMap}}</div>
+	<div>{{vm.data.player.name}} level {{vm.data.player.level}} {{vm.data.player.currentExp}} / {{vm.data.player.nextExp}} {{(vm.data.player.petcentToNextLevel*100).toFixed(2)}}% </div>
+	<div style="display: inline-block; width:49%">
+		<table>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td>{{vm.data.player.hp}}</td>
+			</tr>
+			<tr>
+				<td>{{vm.data.player.attack}}</td>
+			</tr>
+			<tr>
+				<td>{{vm.data.player.attackSpeed}}</td>
+			</tr>
+		</table>
+	</div>
+	<div style="display: inline-block; width:49%">
+		<table>
+			<tr>
+				<td>{{vm.data.target.name}}</td>
+			</tr>
+			<tr>
+				<td>{{vm.data.target.hp}}</td>
+			</tr>
+			<tr>
+				<td>{{vm.data.target.attack}}</td>
+			</tr>
+			<tr>
+				<td>{{vm.data.target.exp}}</td>
+			</tr>
+		</table>
+	</div>
+	<div ng-bind-html="vm.combat">
+		
+	</div>
+	<hr/>
+	<div>
+		<p ng-repeat="item in vm.actionLogs track by $index" >{{item}}</p>
+		
+	</div>
+</div>

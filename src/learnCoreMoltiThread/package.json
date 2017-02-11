@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "name": "mysite",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "6.20.0",
+    "babel-loader": "6.2.9",
+    "babel-preset-latest": "6.16.0",
+    "babel-register": "6.18.0",
+    "chai": "^3.5.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-watch": "^2.1.14",
+    "gulp": "3.9.1",
+    "gulp-uglify": "2.0.0",
+    "gulp-webpack": "^1.5.0",
+    "jsdom": "^9.9.1",
+    "jshint": "2.9.4",
+    "jshint-loader": "0.8.3",
+    "mocha": "^3.2.0",
+    "node-libs-browser": "2.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2",
+    "whatwg-fetch": "^2.0.1"
+  },
+  "scripts": {
+    "start": "npm-run-all --parallel share",
+    "share": "iis-lt --port 65284",
+    "lint": "esw webpack.config.* Javascript --color",
+    "lint:watch": "esw Javascript --color --watch",
+    "test": "./node_modules/.bin/mocha --reporter progress Javascript/testSetup.js \"Javascript/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
+  },
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-sanitize": "^1.6.1",
+    "angular-ui-router": "^0.4.2",
+    "bootstrap": "3.3.7",
+    "jquery": "3.1.1",
+    "jquery-validation": "1.16.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "npm-run-all": "^3.1.2",
+    "path": "^0.12.7"
+  }
+}

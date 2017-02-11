@@ -1,0 +1,20 @@
+
+<div ng-controller="mapsCtl as vm">
+	
+<div ng-repeat="item in vm.map">
+		map name : {{item.name}} 
+		<input type="text" ng-model="item.name" />
+		<input type="button" name="" ng-click="vm.updateMaps(item.id, item.name)" value="add stage"/>
+		<br>
+		monsters:
+		<ul>
+			<li ng-repeat="monster in item.monsterList track by $index">{{monster}}</li>
+		</ul>
+	</div>
+<div>
+	<input type="text" ng-model="vm.stageName"> <input type="button" name="" ng-click="vm.postMap(vm.stageName)" value="add stage">
+</div>
+
+</div>
+
+

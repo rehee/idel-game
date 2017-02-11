@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+
+<body>
+
+    <script>
+        var playerPast = 1;
+        var playerLevel = 1;
+        var tickTime = "";
+        var pastTickTime = "";
+        setInterval(function () {
+            GetProcess()
+                .then(function (data) {
+                    var player = data.player;
+                    var monster = data.monster;
+                    pastTickTime = tickTime;
+                    tickTime = data.date;
+                    if (pastTickTime == tickTime) {
+                        return false;
+                    }
+                    var date = formatDate(new Date(tickTime));
+
+                    playerPast = playerLevel
+                    playerLevel = player.level;
+                    if (player.inAttack) {
+                        console.log(date + ": " + "player do " + player.attackName + " to " + monster.name + " deal " + player.damage + " point damage, monster hp " + monster.hp);
+                        if (parseInt(monster.hp) <= 0) {
+                            console.log(date + ": " + "player get " + monster.exp + " xp");
+                        }
+                    }
+                    if (playerPast != playerLevel) {
+                        console.log(date + ": " + "player level up! now you are level " + playerLevel + "!");
+                    }
+                    if (monster.inAttack) {
+                        console.log(date + ": " + "monster " + monster.name + " deal " + monster.damage + " point damage to player, player hp " + player.hp);
+
+                    }
+                })
+        }, 100);
+
+
+        function formatDate(date) {
+            var curr_date = date.getDate();
+            var curr_month = date.getMonth();
+            var curr_year = date.getFullYear();
+            var curr_hour = date.getHours();
+            var curr_min = date.getMinutes();
+            var curr_second = date.getSeconds();
+            var curr_msecond = date.getMilliseconds();
+            return curr_date + "-" + curr_month + "-" + curr_year + "-" + curr_hour + "-" + curr_min + "-" + curr_second + "-" + curr_msecond;
+
+        }
+
+
+        function GetProcess() {
+            return new Promise(function (resolve, reject) {
+                fetch('/home/GetResult')
+                    .then(function (result) { return result.json(); })
+                    .then(function (data) { resolve(data); })
+            });
+
+        }
+    </script>
+</body>
+</html>
