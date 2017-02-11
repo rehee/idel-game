@@ -1,0 +1,53 @@
+<div ng-controller="monsterCtl as vm">
+	<input type="button" ng-click="vm.mapResrtMonster()">
+	<p>Monsters</p>
+	
+	<div>
+		<div>
+			<table>
+				<tr>
+					<td>name:</td><td><input type="text" ng-model="vm.newMonster.name" /></td>
+				</tr>
+				<tr>
+					<td>hp:</td><td><input type="text" ng-model="vm.newMonster.hp" /></td>
+				</tr>
+				<tr>
+					<td>attack:</td><td><input type="text" ng-model="vm.newMonster.attack" /></td>
+				</tr>
+				<tr>
+					<td>speed:</td><td><input type="text" ng-model="vm.newMonster.speed" /></td>
+				</tr>
+				<tr>
+					<td>exp:</td><td><input type="text" ng-model="vm.newMonster.exp" /></td>
+				</tr>
+			</table>
+			<input type="button" ng-click="vm.createMonster()">
+			
+		</div>
+		
+		
+		<div ui-view>
+
+		</div>
+	</div>
+
+
+	<div ng-repeat="monster in vm.monsters">
+		<p><a ui-sref="layout.monster.detail({id:monster.id})">name:{{monster.name}}</a></p>
+		<p>attribute</p>
+		<ul>
+			<li>hp:{{monster.hp}}</li>
+			<li>attack:{{monster.attack}}</li>
+			<li>speed:{{monster.speed}}</li>
+			<li>exp:{{monster.exp}}</li>
+		</ul>
+		<p>stage</p>
+		<ul>
+			<li ng-repeat="(stage,number) in monster.stageConfig">
+
+				stage:{{vm.stages[stage]}} | number:{{number}}
+			</li>
+		</ul>
+	</div>
+
+</div>

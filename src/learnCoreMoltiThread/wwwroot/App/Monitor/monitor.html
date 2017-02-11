@@ -1,0 +1,33 @@
+<div ng-controller="monitorCtl as vm">
+	<p>
+		<input type="button" name="" value="开始监视" ng-click="vm.connect()">
+	</p>
+	<div>
+		<div ng-repeat="stage in vm.data">
+			<p>地图名称:{{stage.name}} 地图编号{{stage.id}}</p>
+			<table>
+				<tr>
+					<th>怪物名称</th>
+					<th>怪物id</th>
+					<th>当前hp</th>
+					<th>最大hp</th>
+					<th>当前目标</th>
+					<th>伤害来源</th>
+				</tr>
+				<tr ng-repeat="monster in stage.monsters">
+					<td>{{monster.name}}</td>
+					<td>{{monster.id}}</td>
+					<td>{{monster.hp}}</td>
+					<td>{{monster.maxHp}} </td>
+					<td>{{monster.currentTarget}}</td>
+					<td>
+						<span ng-repeat="player in monster.damageTakens" >
+							[{{player.id}} {{player.damage}}]
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
